@@ -1,7 +1,5 @@
 "use client";
-import Image from "next/image";
-import Card from "@/components/card";
-import NoteCard from "./NoteCard";
+import NoteCard from "@/components/noteCard";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import Navbar from "@/components/navbar";
@@ -39,32 +37,10 @@ export default function Home() {
   };
 
   return (
-    <div className={`font-sans grid grid-rows-[60px_1fr_20px] items-center justify-items-center min-h-screen pt-20 pb-20 gap-16 sm:p-20 ${darkMode ? "bg-gray-900 text-white" : "bg-gray-50 text-black"}`}>
+  <div className={`font-sans grid grid-rows-[60px_1fr_20px] items-start justify-items-center min-h-screen pt-20 pb-20 sm:p-20 ${darkMode ? "bg-gray-900 text-white" : "bg-gray-50 text-black"}`}>
       {/* Navigation Bar */}
       <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-  {/* ...existing code... */}
-        <div className="flex gap-6 flex-col sm:flex-row w-full justify-center mt-8">
-          <Card
-            title="Patient Summary"
-            description="View and manage patient medical notes and summaries."
-            icon={
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 21s-6.716-5.373-9.293-8.293A5.978 5.978 0 0 1 2 8.5C2 5.462 4.462 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.538 3 22 5.462 22 8.5c0 1.61-.613 3.117-1.707 4.207C18.716 15.627 12 21 12 21z" fill="#EF4444"/>
-              </svg>
-            }
-          />
-          <Card
-            title="Caregiver Portal"
-            description="Access tools and resources for caregivers and family members."
-            icon={
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="10" fill="#3B82F6" />
-                <path d="M12 16v-4m0-4h.01" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            }
-          />
-        </div>
+      <main className="flex flex-col gap-[32px] row-start-2 items-start sm:items-start w-full">
         {/* Create Note Button */}
         <div className="w-full flex justify-end mt-6">
           <button
