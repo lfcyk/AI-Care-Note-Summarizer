@@ -7,6 +7,9 @@ class Tenant(models.Model):
     name = models.CharField(max_length=200)
     subdomain = models.CharField(max_length=100, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.name
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -18,6 +21,7 @@ class CareNote(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+    family = models.ForeignKey(User, on_delete=models.CASCADE, related_name="family", null=True, blank=True)  # optional
     # optional attachments -> use S3 key or FileField
 
 class Summary(models.Model):
@@ -26,10 +30,3 @@ class Summary(models.Model):
     text_ja = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     generated = models.BooleanField(default=False)
-    family = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-
-
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        UserProfile.objects.create(user=instance, tenant=Tenant.objects.first(), role="family")

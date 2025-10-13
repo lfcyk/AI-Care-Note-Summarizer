@@ -1,0 +1,32 @@
+POST http://127.0.0.1:8000/auth/users/
+Content-Type: application/json
+
+{
+    "username": "testuserCareGiver8",
+    "email": "testuser@test.com",
+    "first_name": "car1",
+    "last_name": "giv1",
+    "password": "perawat1234",
+    "tenant": "1",
+    "role": "caregiver"
+}
+###
+GET http://127.0.0.1:8000/auth/users/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU5OTA2NDkxLCJpYXQiOjE3NTk5MDQ2OTEsImp0aSI6IjVmYmI3MTBkZTg5YjQ2ZjA4OTc4Mzc0NGQxNzg3ZTIxIiwidXNlcl9pZCI6IjEifQ.agfFgR34u3pGH8uoN9M8u-ik2Mp0P82Mzcnrj6JpsAw
+###
+POST http://127.0.0.1:8000/auth/jwt/create/
+Content-Type: application/json
+
+{
+    "username": "lfcyk",
+    "password": "lemon123"   
+}
+###
+POST http://127.0.0.1:8000/auth/jwt/create/
+Content-Type: application/json
+
+{
+    "username": "testuserfam2",
+    "password": "pasien1234"   
+}
