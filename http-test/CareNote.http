@@ -1,18 +1,17 @@
 ### Create CareNote
 POST http://127.0.0.1:8000/api/carenotes/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxMDEyMzIzLCJpYXQiOjE3NjEwMTA1MjMsImp0aSI6IjcxZmZiZThjMTQ5ZjQ0MzA5Y2E3ZTJjNTVjN2Q5YjZhIiwidXNlcl9pZCI6IjExIn0.NtnmnTBlYrRYo4H36t9l6seNgfTnmPFOQz3Z_AONrK0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxMDE0MTQzLCJpYXQiOjE3NjEwMTIzNDMsImp0aSI6ImIwMzIyNjhmNDQ5MDQyYTJiZGE5YzEyYmQ3NDAzZjE3IiwidXNlcl9pZCI6IjExIn0.aVH9DupRIMNfva_5_EKR9FqqS6yslcjDOMk_ddzBxik
 
 {
-    "text": "Patient is tired, didnt sleep well last night.",
-    "family": 3,
-    "tenant": 1
+    "text": "Tanaka-san ate very well and managed to bench 305 last night. but felt a bit dizzy in the morning.",
+    "family": 3
 }
 ### 
 ### Get All CareNotes
 GET http://127.0.0.1:8000/api/carenotes/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwMzQ1NDIwLCJpYXQiOjE3NjAzNDM2MjAsImp0aSI6IjQ1MGJlODg1YmNkNTRiZjdhZjg0NTAwY2Q4MzVhZTgxIiwidXNlcl9pZCI6IjExIn0.MYk2NWilgfMMvdwC0MLJT-Wap3x1u5uRoIBQ5xSmPJI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxMDE0MTQzLCJpYXQiOjE3NjEwMTIzNDMsImp0aSI6ImIwMzIyNjhmNDQ5MDQyYTJiZGE5YzEyYmQ3NDAzZjE3IiwidXNlcl9pZCI6IjExIn0.aVH9DupRIMNfva_5_EKR9FqqS6yslcjDOMk_ddzBxik
 ###
 ### Get CareNote by ID
 GET http://127.0.0.1:8000/api/carenotes/1/

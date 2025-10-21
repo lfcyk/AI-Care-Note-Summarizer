@@ -16,16 +16,16 @@ class CareNoteViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        tenant = getattr(self.request, 'tenant', None)
+        
         if(self.request.user.userprofile.role == 'caregiver' or self.request.user.userprofile.role == 'admin'):
             # family can only see notes from caregivers
-            return CareNote.objects.filter(tenant=tenant)
+            return CareNote.objects.filter(tenant=self.request.user.userprofile.tenant)
         raise PermissionError("Unauthorized access.")
 
     def perform_create(self, serializer):
         if(self.request.user.userprofile.role != 'caregiver' and self.request.user.userprofile.role != 'admin'):
             raise PermissionError("Only caregivers can create care notes.")
-        note = serializer.save(author=self.request.user)
+        note = serializer.save(author=self.request.user, tenant=self.request.user.userprofile.tenant)
         
         try:
             summary = summarize_text(note.text)

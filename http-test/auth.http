@@ -14,6 +14,10 @@ Content-Type: application/json
 GET http://127.0.0.1:8000/auth/users/
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwMzQ0NTE1LCJpYXQiOjE3NjAzNDI3MTUsImp0aSI6ImYxZWE0YjRjNDljODRkMDdhNDg1MzAwOTZlZmE2YmM2IiwidXNlcl9pZCI6IjEifQ.lYFZwoeoSxofLHqd6x2Cz4Pe38eIZHKxM1Q_AwXFmX4
+###
+GET http://127.0.0.1:8000/auth/users/me/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxMDEyMzIzLCJpYXQiOjE3NjEwMTA1MjMsImp0aSI6IjcxZmZiZThjMTQ5ZjQ0MzA5Y2E3ZTJjNTVjN2Q5YjZhIiwidXNlcl9pZCI6IjExIn0.NtnmnTBlYrRYo4H36t9l6seNgfTnmPFOQz3Z_AONrK0
 ### LOGIN ADMIN
 POST http://127.0.0.1:8000/auth/jwt/create/
 Content-Type: application/json

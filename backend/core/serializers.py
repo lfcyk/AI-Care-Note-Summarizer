@@ -6,9 +6,12 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 
 class CareNoteSerializer(serializers.ModelSerializer):
+    author = serializers.ReadOnlyField(source='author.username')
+    tenant = serializers.ReadOnlyField(source='tenant.id')
+    
     class Meta:
         model = CareNote
-        fields = ['id','text','created_at', 'family', 'tenant']
+        fields = ['id','text','created_at', 'family', 'tenant', 'summary_en', 'summary_jp', 'author']
 
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
