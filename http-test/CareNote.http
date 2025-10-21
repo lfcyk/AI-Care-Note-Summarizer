@@ -1,0 +1,50 @@
+### Create CareNote
+POST http://127.0.0.1:8000/api/carenotes/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxMDEyMzIzLCJpYXQiOjE3NjEwMTA1MjMsImp0aSI6IjcxZmZiZThjMTQ5ZjQ0MzA5Y2E3ZTJjNTVjN2Q5YjZhIiwidXNlcl9pZCI6IjExIn0.NtnmnTBlYrRYo4H36t9l6seNgfTnmPFOQz3Z_AONrK0
+
+{
+    "text": "Patient is tired, didnt sleep well last night.",
+    "family": 3,
+    "tenant": 1
+}
+### 
+### Get All CareNotes
+GET http://127.0.0.1:8000/api/carenotes/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwMzQ1NDIwLCJpYXQiOjE3NjAzNDM2MjAsImp0aSI6IjQ1MGJlODg1YmNkNTRiZjdhZjg0NTAwY2Q4MzVhZTgxIiwidXNlcl9pZCI6IjExIn0.MYk2NWilgfMMvdwC0MLJT-Wap3x1u5uRoIBQ5xSmPJI
+###
+### Get CareNote by ID
+GET http://127.0.0.1:8000/api/carenotes/1/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwMzQ1NDIwLCJpYXQiOjE3NjAzNDM2MjAsImp0aSI6IjQ1MGJlODg1YmNkNTRiZjdhZjg0NTAwY2Q4MzVhZTgxIiwidXNlcl9pZCI6IjExIn0.MYk2NWilgfMMvdwC0MLJT-Wap3x1u5uRoIBQ5xSmPJI
+###
+### Update CareNote by ID
+PUT http://127.0.0.1:8000/api/carenotes/1/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwMzQ1NDIwLCJpYXQiOjE3NjAzNDM2MjAsImp0aSI6IjQ1MGJlODg1YmNkNTRiZjdhZjg0NTAwY2Q4MzVhZTgxIiwidXNlcl9pZCI6IjExIn0.MYk2NWilgfMMvdwC0MLJT-Wap3x1u5uRoIBQ5xSmPJI
+
+{
+    "text": "Patient is recovering excellently from surgery.",
+    "family": 3,
+    "tenant": 1
+}
+### 
+### Delete CareNote by ID
+DELETE http://127.0.0.1:8000/api/carenotes/1/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwMzQ1NDIwLCJpYXQiOjE3NjAzNDM2MjAsImp0aSI6IjQ1MGJlODg1YmNkNTRiZjdhZjg0NTAwY2Q4MzVhZTgxIiwidXNlcl9pZCI6IjExIn0.MYk2NWilgfMMvdwC0MLJT-Wap3x1u5uRoIBQ5xSmPJI
+### 
+### Get CareNotes by Family ID
+GET http://127.0.0.1:8000/api/carenotes/by_family/3/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwMzQ1NDIwLCJpYXQiOjE3NjAzNDM2MjAsImp0aSI6IjQ1MGJlODg1YmNkNTRiZjdhZjg0NTAwY2Q4MzVhZTgxIiwidXNlcl9pZCI6IjExIn0.MYk2NWilgfMMvdwC0MLJT-Wap3x1u5uRoIBQ5xSmPJI
+### Get CareNotes by Tenant ID
+GET http://127.0.0.1:8000/api/carenotes/by_tenant/1/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwMzQ1NDIwLCJpYXQiOjE3NjAzNDM2MjAsImp0aSI6IjQ1MGJlODg1YmNkNTRiZjdhZjg0NTAwY2Q4MzVhZTgxIiwidXNlcl9pZCI6IjExIn0.MYk2NWilgfMMvdwC0MLJT-Wap3x1u5uRoIBQ5xSmPJI
+### Get CareNotes by Caregiver ID
+GET http://127.0.0.1:8000/api/carenotes/by_caregiver/11/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwMzQ1NDIwLCJpYXQiOjE3NjAzNDM2MjAsImp0aSI6IjQ1MGJlODg1YmNkNTRiZjdhZjg0NTAwY2Q4MzVhZTgxIiwidXNlcl9pZCI6IjExIn0.MYk2NWilgfMMvdwC0MLJT-Wap3x1u5uRoIBQ5xSmPJI
+###

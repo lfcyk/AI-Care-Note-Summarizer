@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import CareNote, Summary, UserProfile, Tenant
+from .models import CareNote, UserProfile, Tenant
 from djoser.serializers import UserCreateSerializer as BaseUserCreateSerializer
 from djoser.serializers import UserSerializer as BaseUserSerializer
 from rest_framework import serializers
@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 class CareNoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = CareNote
-        fields = ['id','text','created_at']
+        fields = ['id','text','created_at', 'family', 'tenant']
 
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:

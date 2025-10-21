@@ -13,8 +13,8 @@ Content-Type: application/json
 ###
 GET http://127.0.0.1:8000/auth/users/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU5OTA2NDkxLCJpYXQiOjE3NTk5MDQ2OTEsImp0aSI6IjVmYmI3MTBkZTg5YjQ2ZjA4OTc4Mzc0NGQxNzg3ZTIxIiwidXNlcl9pZCI6IjEifQ.agfFgR34u3pGH8uoN9M8u-ik2Mp0P82Mzcnrj6JpsAw
-###
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwMzQ0NTE1LCJpYXQiOjE3NjAzNDI3MTUsImp0aSI6ImYxZWE0YjRjNDljODRkMDdhNDg1MzAwOTZlZmE2YmM2IiwidXNlcl9pZCI6IjEifQ.lYFZwoeoSxofLHqd6x2Cz4Pe38eIZHKxM1Q_AwXFmX4
+### LOGIN ADMIN
 POST http://127.0.0.1:8000/auth/jwt/create/
 Content-Type: application/json
 
@@ -22,11 +22,19 @@ Content-Type: application/json
     "username": "lfcyk",
     "password": "lemon123"   
 }
-###
+### LOGIN FAMILY
 POST http://127.0.0.1:8000/auth/jwt/create/
 Content-Type: application/json
 
 {
     "username": "testuserfam2",
     "password": "pasien1234"   
+}
+### LOGIN CAREGIVER
+POST http://127.0.0.1:8000/auth/jwt/create/
+Content-Type: application/json
+
+{
+    "username": "testuserCareGiver8",
+    "password": "perawat1234"   
 }

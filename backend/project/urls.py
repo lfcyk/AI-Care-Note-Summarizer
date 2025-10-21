@@ -24,4 +24,5 @@ urlpatterns = [
     # Djoser endpoints
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),  # for JWT
+    path('api/', include('core.urls')),  # core app endpoints
 ]

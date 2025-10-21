@@ -22,11 +22,5 @@ class CareNote(models.Model):
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     family = models.ForeignKey(User, on_delete=models.CASCADE, related_name="family", null=True, blank=True)  # optional
-    # optional attachments -> use S3 key or FileField
-
-class Summary(models.Model):
-    care_note = models.OneToOneField(CareNote, on_delete=models.CASCADE)
-    text_en = models.TextField(null=True, blank=True)
-    text_ja = models.TextField(null=True, blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    generated = models.BooleanField(default=False)
+    summary_en = models.TextField(null=True, blank=True)
+    summary_jp = models.TextField(null=True, blank=True)
