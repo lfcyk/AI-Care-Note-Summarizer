@@ -1,14 +1,11 @@
 from rest_framework import viewsets, permissions
 from .models import CareNote
 from .serializers import CareNoteSerializer
-from rest_framework import generics
-from django.contrib.auth.models import User
-from .models import UserProfile
-from .serializers import UserSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from .summarize import summarize_text
 import json
+from rest_framework.decorators import action
 
 class CareNoteViewSet(viewsets.ModelViewSet):
     queryset = CareNote.objects.all()
@@ -37,4 +34,21 @@ class CareNoteViewSet(viewsets.ModelViewSet):
         except Exception as e:
             # Log the error but do not block note creation
             print(f"Error generating summary: {e}")
+
+    # 🆕 Regenerate endpoint
+    @action(detail=True, methods=["post"])
+    def regenerate_summary(self, request, pk=None):
+        note = self.get_object()
+        if note.author != request.user:
+            return Response({"error": "Unauthorized"}, status=status.HTTP_403_FORBIDDEN)
+
+        summary = summarize_text(note.text)
+        data = json.loads(summary)
+        note.summary_en = data.get("en", "").strip()
+        note.summary_jp = data.get("jp", "").strip()
+        note.save()
+        return Response(
+            {"message": "Summary regenerated successfully"},
+            status=status.HTTP_200_OK,
+        )
             

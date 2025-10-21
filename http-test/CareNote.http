@@ -16,8 +16,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiY
 ### Get CareNote by ID
 GET http://127.0.0.1:8000/api/carenotes/1/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwMzQ1NDIwLCJpYXQiOjE3NjAzNDM2MjAsImp0aSI6IjQ1MGJlODg1YmNkNTRiZjdhZjg0NTAwY2Q4MzVhZTgxIiwidXNlcl9pZCI6IjExIn0.MYk2NWilgfMMvdwC0MLJT-Wap3x1u5uRoIBQ5xSmPJI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxMDE1OTg2LCJpYXQiOjE3NjEwMTQxODYsImp0aSI6IjhkYjU2NmZhODQxZTRjZTVhYTNhMWQ5NGQ0MDhlMTY5IiwidXNlcl9pZCI6IjExIn0.LcZASOf6F4GWf_fu4MPXLfZJHgP2EaFKuBf7hgBHEvM
 ###
+### Regenerate Summary for CareNote by ID
+POST http://127.0.0.1:8000/api/carenotes/1/regenerate_summary/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxMDE1OTg2LCJpYXQiOjE3NjEwMTQxODYsImp0aSI6IjhkYjU2NmZhODQxZTRjZTVhYTNhMWQ5NGQ0MDhlMTY5IiwidXNlcl9pZCI6IjExIn0.LcZASOf6F4GWf_fu4MPXLfZJHgP2EaFKuBf7hgBHEvM
 ### Update CareNote by ID
 PUT http://127.0.0.1:8000/api/carenotes/1/
 Content-Type: application/json
