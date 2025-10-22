@@ -1,7 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 
 class Tenant(models.Model):
     name = models.CharField(max_length=200)
@@ -20,6 +18,7 @@ class CareNote(models.Model):
     tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()
+    patient_name = models.CharField(max_length=200, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     family = models.ForeignKey(User, on_delete=models.CASCADE, related_name="family", null=True, blank=True)  # optional
     summary_en = models.TextField(null=True, blank=True)

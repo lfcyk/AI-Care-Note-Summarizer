@@ -1,34 +1,34 @@
 ### Create CareNote
 POST http://127.0.0.1:8000/api/carenotes/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxMDE0MTQzLCJpYXQiOjE3NjEwMTIzNDMsImp0aSI6ImIwMzIyNjhmNDQ5MDQyYTJiZGE5YzEyYmQ3NDAzZjE3IiwidXNlcl9pZCI6IjExIn0.aVH9DupRIMNfva_5_EKR9FqqS6yslcjDOMk_ddzBxik
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxMTE3MTg2LCJpYXQiOjE3NjExMTUzODYsImp0aSI6IjhiMzQxZTY0MGIwMjQzMmM4YWM1N2JmMzdjNDA4MzY0IiwidXNlcl9pZCI6IjMifQ.OAirEmK4fOxZJuRMSbngPxuDC1RV2bOACEh6YF1zrcs
 
 {
-    "text": "Tanaka-san ate very well and managed to bench 305 last night. but felt a bit dizzy in the morning.",
-    "family": 3
+    "text": "Yamada-san bench 305 last night. but felt a bit dizzy in the morning.",
+    "family": 1
 }
 ### 
 ### Get All CareNotes
 GET http://127.0.0.1:8000/api/carenotes/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxMDE0MTQzLCJpYXQiOjE3NjEwMTIzNDMsImp0aSI6ImIwMzIyNjhmNDQ5MDQyYTJiZGE5YzEyYmQ3NDAzZjE3IiwidXNlcl9pZCI6IjExIn0.aVH9DupRIMNfva_5_EKR9FqqS6yslcjDOMk_ddzBxik
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxMTE3MTg2LCJpYXQiOjE3NjExMTUzODYsImp0aSI6IjhiMzQxZTY0MGIwMjQzMmM4YWM1N2JmMzdjNDA4MzY0IiwidXNlcl9pZCI6IjMifQ.OAirEmK4fOxZJuRMSbngPxuDC1RV2bOACEh6YF1zrcs
 ###
 ### Get CareNote by ID
 GET http://127.0.0.1:8000/api/carenotes/1/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxMDE1OTg2LCJpYXQiOjE3NjEwMTQxODYsImp0aSI6IjhkYjU2NmZhODQxZTRjZTVhYTNhMWQ5NGQ0MDhlMTY5IiwidXNlcl9pZCI6IjExIn0.LcZASOf6F4GWf_fu4MPXLfZJHgP2EaFKuBf7hgBHEvM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxMTE3MTg2LCJpYXQiOjE3NjExMTUzODYsImp0aSI6IjhiMzQxZTY0MGIwMjQzMmM4YWM1N2JmMzdjNDA4MzY0IiwidXNlcl9pZCI6IjMifQ.OAirEmK4fOxZJuRMSbngPxuDC1RV2bOACEh6YF1zrcs
 ###
 ### Regenerate Summary for CareNote by ID
 POST http://127.0.0.1:8000/api/carenotes/1/regenerate_summary/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxMDE1OTg2LCJpYXQiOjE3NjEwMTQxODYsImp0aSI6IjhkYjU2NmZhODQxZTRjZTVhYTNhMWQ5NGQ0MDhlMTY5IiwidXNlcl9pZCI6IjExIn0.LcZASOf6F4GWf_fu4MPXLfZJHgP2EaFKuBf7hgBHEvM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxMTE3MTg2LCJpYXQiOjE3NjExMTUzODYsImp0aSI6IjhiMzQxZTY0MGIwMjQzMmM4YWM1N2JmMzdjNDA4MzY0IiwidXNlcl9pZCI6IjMifQ.OAirEmK4fOxZJuRMSbngPxuDC1RV2bOACEh6YF1zrcs
 ### Update CareNote by ID
 PUT http://127.0.0.1:8000/api/carenotes/1/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwMzQ1NDIwLCJpYXQiOjE3NjAzNDM2MjAsImp0aSI6IjQ1MGJlODg1YmNkNTRiZjdhZjg0NTAwY2Q4MzVhZTgxIiwidXNlcl9pZCI6IjExIn0.MYk2NWilgfMMvdwC0MLJT-Wap3x1u5uRoIBQ5xSmPJI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxMTE3MTg2LCJpYXQiOjE3NjExMTUzODYsImp0aSI6IjhiMzQxZTY0MGIwMjQzMmM4YWM1N2JmMzdjNDA4MzY0IiwidXNlcl9pZCI6IjMifQ.OAirEmK4fOxZJuRMSbngPxuDC1RV2bOACEh6YF1zrcs
 
 {
-    "text": "Patient is recovering excellently from surgery.",
+    "text": "Patient is on track to become olympian lifter.",
     "family": 3,
     "tenant": 1
 }
@@ -36,18 +36,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiY
 ### Delete CareNote by ID
 DELETE http://127.0.0.1:8000/api/carenotes/1/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwMzQ1NDIwLCJpYXQiOjE3NjAzNDM2MjAsImp0aSI6IjQ1MGJlODg1YmNkNTRiZjdhZjg0NTAwY2Q4MzVhZTgxIiwidXNlcl9pZCI6IjExIn0.MYk2NWilgfMMvdwC0MLJT-Wap3x1u5uRoIBQ5xSmPJI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxMTE3MTg2LCJpYXQiOjE3NjExMTUzODYsImp0aSI6IjhiMzQxZTY0MGIwMjQzMmM4YWM1N2JmMzdjNDA4MzY0IiwidXNlcl9pZCI6IjMifQ.OAirEmK4fOxZJuRMSbngPxuDC1RV2bOACEh6YF1zrcs
 ### 
-### Get CareNotes by Family ID
-GET http://127.0.0.1:8000/api/carenotes/by_family/3/
+### GET CareNotes for Family Member (New Endpoint)
+GET http://127.0.0.1:8000/api/family/carenotes/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwMzQ1NDIwLCJpYXQiOjE3NjAzNDM2MjAsImp0aSI6IjQ1MGJlODg1YmNkNTRiZjdhZjg0NTAwY2Q4MzVhZTgxIiwidXNlcl9pZCI6IjExIn0.MYk2NWilgfMMvdwC0MLJT-Wap3x1u5uRoIBQ5xSmPJI
-### Get CareNotes by Tenant ID
-GET http://127.0.0.1:8000/api/carenotes/by_tenant/1/
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwMzQ1NDIwLCJpYXQiOjE3NjAzNDM2MjAsImp0aSI6IjQ1MGJlODg1YmNkNTRiZjdhZjg0NTAwY2Q4MzVhZTgxIiwidXNlcl9pZCI6IjExIn0.MYk2NWilgfMMvdwC0MLJT-Wap3x1u5uRoIBQ5xSmPJI
-### Get CareNotes by Caregiver ID
-GET http://127.0.0.1:8000/api/carenotes/by_caregiver/11/
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwMzQ1NDIwLCJpYXQiOjE3NjAzNDM2MjAsImp0aSI6IjQ1MGJlODg1YmNkNTRiZjdhZjg0NTAwY2Q4MzVhZTgxIiwidXNlcl9pZCI6IjExIn0.MYk2NWilgfMMvdwC0MLJT-Wap3x1u5uRoIBQ5xSmPJI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxMTE3MTg2LCJpYXQiOjE3NjExMTUzODYsImp0aSI6IjhiMzQxZTY0MGIwMjQzMmM4YWM1N2JmMzdjNDA4MzY0IiwidXNlcl9pZCI6IjMifQ.OAirEmK4fOxZJuRMSbngPxuDC1RV2bOACEh6YF1zrcs
 ###

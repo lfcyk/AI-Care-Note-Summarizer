@@ -1,11 +1,12 @@
 from rest_framework import viewsets, permissions
 from .models import CareNote
-from .serializers import CareNoteSerializer
+from .serializers import CareNoteSerializer, CareNoteSummarySerializer
 from rest_framework.response import Response
 from rest_framework import status
 from .summarize import summarize_text
 import json
 from rest_framework.decorators import action
+from rest_framework import generics, permissions
 
 class CareNoteViewSet(viewsets.ModelViewSet):
     queryset = CareNote.objects.all()
@@ -52,3 +53,16 @@ class CareNoteViewSet(viewsets.ModelViewSet):
             status=status.HTTP_200_OK,
         )
             
+class FamilyCareNotesView(generics.ListAPIView):
+    serializer_class = CareNoteSummarySerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        if self.request.user.userprofile.role != 'family':
+            raise PermissionError("Only family members can access this view.")
+        return CareNote.objects.filter(
+            tenant=self.request.user.userprofile.tenant,
+            family=self.request.user,
+            summary_en__isnull=False,
+            summary_jp__isnull=False,
+        ).order_by('-created_at')

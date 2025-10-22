@@ -47,3 +47,8 @@ class CustomUserCreateSerializer(BaseUserCreateSerializer):
         user = super().create(validated_data)
         UserProfile.objects.create(user=user, tenant=tenant, role=role)
         return user
+
+class CareNoteSummarySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CareNote
+        fields = ['id', 'summary_en', 'summary_jp', 'patient_name', 'created_at', 'author', 'family']
