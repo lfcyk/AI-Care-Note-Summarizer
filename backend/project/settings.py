@@ -49,11 +49,11 @@ MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
 ROOT_URLCONF = "project.urls"
@@ -147,26 +147,27 @@ DJOSER = {
         "current_user": "core.serializers.UserSerializer",
     }
 }
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "https://cuddly-palm-tree-6pr5ppw4r73rrgj-3000.app.github.dev",
-]
 
-CORS_ALLOW_ALL_ORIGINS = True  # or whitelist your Vercel domain
-CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",
+#     'http://127.0.0.1:3000',
+#     "https://cuddly-palm-tree-6pr5ppw4r73rrgj-3000.app.github.dev",
+# ]
+CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ALLOW_ALL_ORIGINS = True  # or whitelist your Vercel domain
+# CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOW_METHODS = [
+#     "GET",
+#     "POST",
+#     "PUT",
+#     "PATCH",
+#     "DELETE",
+#     "OPTIONS",
+# ]
 
-CORS_ALLOW_METHODS = [
-    "GET",
-    "POST",
-    "PUT",
-    "PATCH",
-    "DELETE",
-    "OPTIONS",
-]
-
-CORS_ALLOW_HEADERS = [
-    "authorization",
-    "content-type",
-    "x-csrftoken",
-    "accept",
-]
+# CORS_ALLOW_HEADERS = [
+#     "authorization",
+#     "content-type",
+#     "x-csrftoken",
+#     "accept",
+# ]

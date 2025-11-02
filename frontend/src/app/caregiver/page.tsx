@@ -3,17 +3,24 @@
 import { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import api from "@/utils/api";
+import NoteCard from "@/components/noteCard";
 
 type Note = {
   id: number;
   text: string;
   created_at: string;
+  author?: string;
+  summary_en?: string;
+  summary_jp?: string;
+  family: string;
+  tenant?: string;
 };
 
 export default function CaregiverPage() {
   const [text, setText] = useState("");
   const queryClient = useQueryClient();
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxNzI2MjY5LCJpYXQiOjE3NjE3MjQ0NjksImp0aSI6IjUxMmVhMzE5YWJhMDQ4ZTZhYTBlZmViZDZkYmNjZTlmIiwidXNlcl9pZCI6IjExIn0.zhxb8JAgzJQ3F7HoT4OdciVLP0ZgMn9ztAJjBz7q-CY";
+  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYyMDkwMjg2LCJpYXQiOjE3NjIwODg0ODYsImp0aSI6ImFjYjM1MTU3ZjBkYjRhN2Q5NjMyMDY0MGZjZDcxZTRhIiwidXNlcl9pZCI6IjExIn0.LSZcMRgHt4zsLaqdlqoDZpV5sPuaOHcVlyK0VfClcGU";
+  
   const { data: notes } = useQuery<Note[]>({
     queryKey: ["notes"],
     queryFn: async () => (await api.get("/carenotes/", {
@@ -53,14 +60,25 @@ export default function CaregiverPage() {
         <h2 className="font-semibold mb-2">Past Notes</h2>
         <ul className="space-y-2">
           {notes?.map((n) => (
-            <li key={n.id} className="border rounded p-2">
-              <p>{n.text}</p>
-              <small className="text-gray-500 block mt-1">
-                {new Date(n.created_at).toLocaleString('en-US', {
-                  timeZone: 'Asia/Tokyo',
-                })}
-              </small>
-            </li>
+            // <li key={n.id} className="border rounded p-2">
+            //   <p>{n.text}</p>
+            //   <small className="text-gray-500 block mt-1">
+            //     {new Date(n.created_at).toLocaleString('en-US', {
+            //       timeZone: 'Asia/Tokyo',
+            //     })}
+            //   </small>
+            // </li>
+            <NoteCard
+              key={n.id}
+              text={n.text}
+              author={n.author}
+              created_at={new Date(n.created_at).toLocaleString('en-US', {
+                timeZone: 'Asia/Tokyo',
+              })}
+              summary_en={n.summary_en}
+              summary_jp={n.summary_jp}
+              family={n.family}
+              />
           ))}
         </ul>
       </div>
