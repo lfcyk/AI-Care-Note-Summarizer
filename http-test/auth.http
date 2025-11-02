@@ -42,3 +42,10 @@ Content-Type: application/json
     "username": "testuserCareGiver8",
     "password": "perawat1234"   
 }
+### Refresh TOKEN
+POST http://127.0.0.1:8000/auth/jwt/refresh/
+Content-Type: application/json
+{
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc2MDM0NzkxNSwiaWF0IjoxNzYwMzQyNzE1LCJqdGkiOiJlY2I3Y2JiY2EwZTQ0NDk0YmI4Y2EwNmQzZTg3ZjI1ZiIsInVzZXJfaWQiOiIxIn0.oU7ZKXo3F1bX1j1Z5v1nX1KX1Z1Z1Z1Z1Z1Z1Z1Z1Z1Z"
+}
+###

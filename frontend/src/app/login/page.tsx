@@ -1,23 +1,30 @@
 "use client";
 
 import React, { useState } from 'react';
+import {useRouter} from 'next/navigation';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('family');
   const [error, setError] = useState('');
+  const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Add authentication logic here
-    if (!email || !password) {
-      setError('Please enter both email and password.');
-      return;
+    // // TODO: Add authentication logic here
+    // if (!email || !password) {
+    //   setError('Please enter both email and password.');
+    //   return;
+    // }
+    // setError('');
+    // // Simulate login
+    // alert(`Login submitted!\nRole: ${role}`);
+    if(role === 'family') {
+      router.push('/family');
+    } else {
+      router.push('/caregiver');
     }
-    setError('');
-    // Simulate login
-    alert(`Login submitted!\nRole: ${role}`);
   };
 
   return (
