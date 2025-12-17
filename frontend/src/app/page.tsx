@@ -4,6 +4,19 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import { useTheme } from "@/utils/ThemeProvider";
+import FamilyCard from "@/components/familyCard";
+
+type Note = {
+  id: number;
+  text: string;
+  created_at: string;
+  author?: string;
+  summary_en?: string;
+  summary_jp?: string;
+  family: string;
+  tenant?: string;
+};
 
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
@@ -13,16 +26,7 @@ export default function Home() {
     author: "",
     date: ""
   });
-  const [darkMode, setDarkMode] = useState(false);
-  const [avatarOpen, setAvatarOpen] = useState(false);
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [darkMode]);
+  const { dark, toggleTheme } = useTheme()!;
 
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setNoteForm({ ...noteForm, [e.target.name]: e.target.value });
@@ -36,10 +40,33 @@ export default function Home() {
     alert("Note created!");
   };
 
+  const mockNotes: Note[] = [
+    {
+      id: 1,
+      text: "Patient had good appetite today. Took morning medications without issues.",
+      created_at: "2024-01-15T09:30:00Z",
+      author: "John Nurse",
+      summary_en: "Good appetite, medications taken",
+      summary_jp: "食欲が良好、服薬完了",
+      family: "Smith Family",
+      tenant: "Care Home A",
+    },
+    {
+      id: 2,
+      text: "Slight fever observed in the evening. Monitoring vitals closely.",
+      created_at: "2024-01-14T18:45:00Z",
+      author: "Jane Caregiver",
+      summary_en: "Slight fever, vitals monitored",
+      summary_jp: "軽い発熱、バイタル監視中",
+      family: "Johnson Family",
+      tenant: "Care Home A",
+    },
+  ];
+
   return (
-  <div className={`font-sans grid grid-rows-[60px_1fr_20px] items-start justify-items-center min-h-screen pt-20 pb-20 sm:p-20 ${darkMode ? "bg-gray-900 text-white" : "bg-gray-50 text-black"}`}>
+  <div className={`font-sans grid grid-rows-[60px_1fr_20px] items-start justify-items-center min-h-screen pt-20 pb-20 sm:p-20 ${dark ? "bg-gray-900 text-white" : "bg-gray-50 text-black"}`}>
       {/* Navigation Bar */}
-      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+      <Navbar/>
       <main className="flex flex-col gap-[32px] row-start-2 items-start sm:items-start w-full">
         {/* Create Note Button */}
         <div className="w-full flex justify-end mt-6">
@@ -109,36 +136,54 @@ export default function Home() {
         )}
         {/* NoteCard grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full mt-10">
-          <NoteCard
-            title="Medication Update"
-            content="Patient started new medication for blood pressure. Monitor for side effects."
-            author="Dr. Smith"
-            date="2025-09-18"
-          />
-          <NoteCard
-            title="Caregiver Visit"
-            content="Caregiver visited patient and assisted with daily activities."
-            author="Jane Doe"
-            date="2025-09-17"
-          />
-          <NoteCard
-            title="Family Feedback"
-            content="Family reported improvement in patient mood and appetite."
-            author="Family"
-            date="2025-09-16"
-          />
-          <NoteCard
-            title="Physical Therapy"
-            content="Patient completed physical therapy session. Progress noted."
-            author="Therapist"
-            date="2025-09-15"
-          />
-          <NoteCard
-            title="Nutrition Update"
-            content="Diet adjusted to include more protein and vegetables."
-            author="Dietician"
-            date="2025-09-14"
-          />
+          {mockNotes.map((note) => (
+            <NoteCard
+              key={note.id}
+              text={note.text}
+              author={note.author}
+              created_at={new Date(note.created_at).toLocaleString('en-US', {
+                timeZone: 'Asia/Tokyo',
+              })}
+              summary_en={note.summary_en}
+              summary_jp={note.summary_jp}
+              family={note.family}
+            />
+          ))}
+          {mockNotes.map((note) => (
+            <NoteCard
+              key={note.id}
+              text={note.text}
+              author={note.author}
+              created_at={new Date(note.created_at).toLocaleString('en-US', {
+                timeZone: 'Asia/Tokyo',
+              })}
+              summary_en={note.summary_en}
+              summary_jp={note.summary_jp}
+              family={note.family}
+            />
+          ))}
+          {mockNotes.map((note) => (
+            <FamilyCard
+              key={note.id}
+              created_at={new Date(note.created_at).toLocaleString('en-US', {
+                timeZone: 'Asia/Tokyo',
+              })}
+              summary_en={note.summary_en}
+              summary_jp={note.summary_jp}
+              family={note.family}
+            />
+          ))}
+          {mockNotes.map((note) => (
+            <FamilyCard
+              key={note.id}
+              created_at={new Date(note.created_at).toLocaleString('en-US', {
+                timeZone: 'Asia/Tokyo',
+              })}
+              summary_en={note.summary_en}
+              summary_jp={note.summary_jp}
+              family={note.family}
+            />
+          ))}
         </div>
       </main>
       <Footer/>

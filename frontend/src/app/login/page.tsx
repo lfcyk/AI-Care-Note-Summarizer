@@ -10,21 +10,31 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // // TODO: Add authentication logic here
-    // if (!email || !password) {
-    //   setError('Please enter both email and password.');
-    //   return;
-    // }
-    // setError('');
-    // // Simulate login
-    // alert(`Login submitted!\nRole: ${role}`);
-    if(role === 'family') {
-      router.push('/family');
-    } else {
-      router.push('/caregiver');
+    // TODO: Add authentication logic here
+
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: email, password, role }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || 'Login failed');
+        return;
+      }
+
+      const data = await response.json();
+      console.log(data);
+      localStorage.setItem('access_token', data.access);
+    } catch (err) {
+      setError('An error occurred during login');
+      return;
     }
+    setError('');
   };
 
   return (
@@ -59,7 +69,7 @@ export default function LoginPage() {
             Email
           </label>
           <input
-            type="email"
+            type="text"
             id="email"
             value={email}
             onChange={e => setEmail(e.target.value)}

@@ -1,38 +1,51 @@
-import cookie from 'cookie';
+import { NextRequest, NextResponse } from 'next/server';
 
-export default async function handler(req: { method: string; body: { username: any; password: any; }; }, res: { status: (arg0: number) => { (): any; new(): any; end: { (): any; new(): any; }; json: { (arg0: { access?: any; error?: string; }): any; new(): any; }; }; setHeader: (arg0: string, arg1: any) => void; }) {
-  if (req.method !== 'POST') return res.status(405).end();
+// filepath: /workspaces/AI-Care-Note-Summarizer/frontend/src/app/api/login/route.ts
 
-  const { username, password } = req.body;
-
+export async function POST(request: NextRequest) {
   try {
-    // Replace with your Django token URL
-    const djangoRes = await fetch(`${process.env.DJANGO_API_URL}/api/token/`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, password }),
-    });
+    const body = await request.json();
+    const { username, password, role } = body;
 
-    const data = await djangoRes.json();
-    if (!djangoRes.ok) {
-      return res.status(djangoRes.status).json(data);
+    if (!username || !password || !role) {
+      return NextResponse.json(
+        { error: 'Missing required fields' },
+        { status: 400 }
+      );
     }
 
-    const { access, refresh } = data;
+    const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000/api';
+    
+    const response = await fetch(`${backendUrl}/auth/jwt/create/`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username:username, password:password }),
+    });
+    if (!response.ok) {
+      console.log(response);
+      const data = await response.json();
+      return NextResponse.json(
+        { error: data.detail || 'Login failed' },
+        { status: response.status }
+      );
+    }
 
-    // Set refresh token in HttpOnly cookie
-    res.setHeader('Set-Cookie', cookie.serialize('refresh_token', refresh, {
+    const data = await response.json();
+    
+    const res = NextResponse.json(data, { status: 200 });
+    res.cookies.set('access_token', data.access, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax', // or 'strict' depending on your needs
-      path: '/',
-      maxAge: 7 * 24 * 60 * 60, // seconds: match refresh lifetime
-    }));
+      sameSite: 'lax',
+      maxAge: 60 * 60 * 24, // 24 hours
+    });
 
-    // Send access token to client (you can opt to set it as cookie too)
-    return res.status(200).json({ access });
-  } catch (err) {
-    console.error(err);
-    return res.status(500).json({ error: 'Login failed' });
+    return res;
+  } catch (error) {
+    console.error('Login error:', error);
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    );
   }
 }
